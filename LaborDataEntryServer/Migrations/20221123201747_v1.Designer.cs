@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaborDataEntryServer.Migrations
 {
     [DbContext(typeof(LaborDb))]
-    [Migration("20221123192335_v1")]
+    [Migration("20221123201747_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,6 +107,27 @@ namespace LaborDataEntryServer.Migrations
                     b.HasIndex("DistrictId");
 
                     b.ToTable("Labor", (string)null);
+                });
+
+            modelBuilder.Entity("LaborDataEntryServer.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("LaborDataEntryServer.Models.District", b =>
