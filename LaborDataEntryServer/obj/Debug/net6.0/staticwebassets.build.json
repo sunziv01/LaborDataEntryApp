@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7MVxW1y2zS00kv9HBvx8CI7JRlmKhg2fGIeXqbaVIk0=",
+  "Source": "LaborDataEntryServer",
+  "BasePath": "_content/LaborDataEntryServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
