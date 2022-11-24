@@ -1,9 +1,6 @@
 ﻿using LaborDataEntryServer.Models;
 using LaborDataEntryServer.Repository;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,46 +10,45 @@ namespace LaborDataEntryServer.Controllers
     /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
-    public class LaborWebAPIController : ControllerBase
+    public class CountryWebAPIController : ControllerBase
     {
         LaborDb db;
-        public LaborWebAPIController(LaborDb db)
+        public CountryWebAPIController(LaborDb db)
         {
             this.db = db;
         }
-        // GET: api/<LaborWebAPIController>
-        /*[Route("LaborList")]*/
+
+            // GET: api/<CountryWebAPIController>
         [HttpGet]
         public IActionResult Get()
         {
-            var labor = db.Labor.ToList();
-            /*var labor = db.Country.Include(x => x.District).Include(x => x.Labor).ToList();*/
-            return Ok(labor);
+            var country = db.Country.ToList();
+            return Ok(country);
         }
 
-        // GET api/<LaborWebAPIController>/5
+        // GET api/<CountryWebAPIController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<LaborWebAPIController>
+        // POST api/<CountryWebAPIController>
         [HttpPost]
-        public IActionResult Post([FromBody] Labor LaborObj)
+        public IActionResult Post([FromBody] Country CountryObj)
         {
-            db.Labor.Add(LaborObj); // in memory
+            db.Country.Add(CountryObj);
             db.SaveChanges();
             return Ok();
         }
 
-        // PUT api/<LaborWebAPIController>/5
+        // PUT api/<CountryWebAPIController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<LaborWebAPIController>/5
+        // DELETE api/<CountryWebAPIController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

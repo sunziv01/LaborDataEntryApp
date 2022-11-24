@@ -1,9 +1,6 @@
 ﻿using LaborDataEntryServer.Models;
 using LaborDataEntryServer.Repository;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,46 +10,44 @@ namespace LaborDataEntryServer.Controllers
     /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
-    public class LaborWebAPIController : ControllerBase
+    public class DistrictWebAPIController : ControllerBase
     {
         LaborDb db;
-        public LaborWebAPIController(LaborDb db)
+        public DistrictWebAPIController(LaborDb db)
         {
             this.db = db;
         }
-        // GET: api/<LaborWebAPIController>
-        /*[Route("LaborList")]*/
+        // GET: api/<DistrictWebAPIController>
         [HttpGet]
         public IActionResult Get()
         {
-            var labor = db.Labor.ToList();
-            /*var labor = db.Country.Include(x => x.District).Include(x => x.Labor).ToList();*/
-            return Ok(labor);
+            var district = db.District.ToList();
+            return Ok(district);
         }
 
-        // GET api/<LaborWebAPIController>/5
+        // GET api/<DistrictWebAPIController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<LaborWebAPIController>
+        // POST api/<DistrictWebAPIController>
         [HttpPost]
-        public IActionResult Post([FromBody] Labor LaborObj)
+        public IActionResult Post([FromBody] District DistrictObj)
         {
-            db.Labor.Add(LaborObj); // in memory
+            db.District.Add(DistrictObj); // in memory
             db.SaveChanges();
             return Ok();
         }
 
-        // PUT api/<LaborWebAPIController>/5
+        // PUT api/<DistrictWebAPIController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<LaborWebAPIController>/5
+        // DELETE api/<DistrictWebAPIController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

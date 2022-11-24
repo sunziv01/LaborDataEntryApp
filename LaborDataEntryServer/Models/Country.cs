@@ -14,6 +14,7 @@ namespace LaborDataEntryServer.Models
         public string Code { get; set; }
         public bool IsActive{ get; set; }
         public ICollection<District> District { get; set; } //Country one-to-many District
-        public ICollection<Labor> Labor { get; set; }
+        
+        public ICollection<Labor> Labor;
     }
 }

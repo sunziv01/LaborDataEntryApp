@@ -17,6 +17,7 @@ namespace LaborDataEntryServer.Models
         public string Code { get; set; }
         public int LaborRatePerHour { get; set; }
         public bool IsActive { get; set; }
-        public ICollection<Labor> Labor { get; set; }
+
+        public ICollection<Labor> Labor;
     }
 }
