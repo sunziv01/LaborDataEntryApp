@@ -48,8 +48,24 @@ namespace LaborDataEntryServer.Controllers
 
         // PUT api/<LaborWebAPIController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Labor LaborObj)
         {
+            var select = db.Labor.Where(s => s.Id == id)
+                                                    .FirstOrDefault<Labor>();
+            if (select != null)
+            {
+                select.Id = id;
+                select.LaborName = LaborObj.LaborName;
+                select.CountryId = LaborObj.CountryId;
+                select.DistrictId = LaborObj.DistrictId;
+                select.TaskDetail = LaborObj.TaskDetail;
+                select.WorkHours = LaborObj.WorkHours;
+                db.SaveChanges();
+            }
+            /*else
+            {
+                return NotFound();
+            }*/
         }
 
         // DELETE api/<LaborWebAPIController>/5
