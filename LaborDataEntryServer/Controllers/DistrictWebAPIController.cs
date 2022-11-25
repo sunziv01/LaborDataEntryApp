@@ -43,8 +43,19 @@ namespace LaborDataEntryServer.Controllers
 
         // PUT api/<DistrictWebAPIController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] District DistrictObj)
         {
+            var select = db.District.Where(x => x.Id == id)
+                                                           .FirstOrDefault<District>();
+            if(select != null)
+            {
+                select.Id = id; ;
+                select.CountryId = DistrictObj.CountryId;
+                select.Code = DistrictObj.Code;
+                select .LaborRatePerHour = DistrictObj.LaborRatePerHour;
+                select.IsActive = DistrictObj.IsActive;
+                db.SaveChanges();
+            }
         }
 
         // DELETE api/<DistrictWebAPIController>/5

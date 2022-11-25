@@ -26,11 +26,11 @@ namespace LaborDataEntryServer.Controllers
         }
         public IActionResult CheckUser([FromBody] User obj)
         {
-           
+
             User select = (from temp in db.User
                            where temp.Username == obj.Username && temp.Password == obj.Password
                            select temp).ToList<User>()[0];
-            if(select == null)
+            if (select == null)
             {
                 return StatusCode(StatusCodes.Status401Unauthorized, "not allowed");
             }

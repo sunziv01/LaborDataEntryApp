@@ -44,8 +44,18 @@ namespace LaborDataEntryServer.Controllers
 
         // PUT api/<CountryWebAPIController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Country CountryObj)
         {
+            var select = db.Country.Where(x => x.Id == id)
+                                                        .FirstOrDefault<Country>();
+            if(select != null)
+            {
+                select.Id = id;
+                select.Name = CountryObj.Name;
+                select.Code = CountryObj.Code;
+                select.IsActive = CountryObj.IsActive;
+                db.SaveChanges();
+            }
         }
 
         // DELETE api/<CountryWebAPIController>/5

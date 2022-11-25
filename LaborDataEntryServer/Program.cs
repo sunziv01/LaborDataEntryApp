@@ -1,5 +1,6 @@
 using LaborDataEntryServer.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -38,6 +39,13 @@ builder.Services.AddCors(options =>
         });
 });
 
+//Make camelcase Off
+builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions
+.PropertyNamingPolicy = null;
+            });
 
 
 
@@ -58,8 +66,10 @@ if (app.Environment.IsDevelopment())
 }
 app.UseAuthentication();
 app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseRouting();
+app.UseCors("AllowOrigin");
 
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
