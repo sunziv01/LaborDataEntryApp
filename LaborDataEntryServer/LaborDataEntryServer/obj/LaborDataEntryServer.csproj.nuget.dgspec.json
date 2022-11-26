@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {}
+    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {}
   },
   "projects": {
-    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {
+    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
+        "projectUniqueName": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
         "projectName": "LaborDataEntryServer",
-        "projectPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
+        "projectPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
         "packagesPath": "C:\\Users\\Sanjeev\\.nuget\\packages\\",
-        "outputPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\obj\\",
+        "outputPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sanjeev\\AppData\\Roaming\\NuGet\\NuGet.Config",
