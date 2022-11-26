@@ -1,9 +1,9 @@
 <nav class="navbar navbar-light bg-dark">
     <div class="container-fluid">
-        <h2 class="text-light primary py-3">Labor</h2>
+        <h2 class="text-light primary py-3">Report</h2>
 
         <div class="d-flex">
-            <button class="btn btn-success" (click)="add()"data-bs-toggle="modal" data-bs-target="#exampleModal">Add Labor</button>&nbsp;
+            <button class="btn btn-success" (click)="add()"data-bs-toggle="modal" data-bs-target="#exampleModal">Add Report</button>&nbsp;
         </div>
     </div>
 </nav>
@@ -31,8 +31,8 @@
             <td>{{data.TaskDetail}}</td>
             <td>{{data.WorkHours}}</td>
             <td>
-               <button class="btn btn-info"(click)="edit(data)"data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
-               <button class="btn btn-danger"(click)="deletelab(data)">Delete</button>
+               <!-- <button class="btn btn-info"(click)="edit(data)"data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp; -->
+               <!-- <button class="btn btn-danger"(click)="deletelab(data)">Delete</button> -->
             </td>
         </tr>
     </tbody>
@@ -46,7 +46,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div style="background:blue;"class="modal-header">
-          <h5 style="color:aliceblue;font-size:20px;margin-left:62px;font-weight: 620;"class="modal-title" id="exampleModalLabel"> Labor</h5>
+          <h5 style="color:aliceblue;font-size:20px;margin-left:62px;font-weight: 620;"class="modal-title" id="exampleModalLabel"> Report</h5>
             <button type="button"class="btn-close "  data-bs-dismiss="modal" aria-label="Close">   
           </button>
         </div>
@@ -104,7 +104,7 @@
         <div style="background: blue;"class="modal-footer">
           <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
           <button *ngIf="showadd"type="button"(click)="addlabor()"[disabled]="formValue.invalid" class="btn btn-success">Add</button>
-          <button *ngIf="showupdate"type="button"(click)="update()" [disabled]="formValue.invalid"class="btn btn-success">Update</button>
+          <!-- <button *ngIf="showupdate"type="button"(click)="update()" [disabled]="formValue.invalid"class="btn btn-success">Update</button> -->
         </div>
       </div>
     </div>

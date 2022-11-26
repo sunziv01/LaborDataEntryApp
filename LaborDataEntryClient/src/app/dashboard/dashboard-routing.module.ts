@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../labor/labor.module').then((m) => m.LaborModule),
   },
+  {
+    path: 'Report',
+    loadChildren: () =>
+      import('../report/report.module').then((m) => m.ReportModule),
+  },
 ];
 
 @NgModule({
