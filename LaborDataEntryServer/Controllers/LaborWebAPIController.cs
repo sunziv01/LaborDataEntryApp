@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LaborDataEntryServer.Controllers
 {
-    /*[EnableCors("AllowOrigin")]*/
+    [EnableCors("AllowOrigin")]
     /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
@@ -50,28 +50,27 @@ namespace LaborDataEntryServer.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Labor LaborObj)
         {
-            var select = db.Labor.Where(s => s.Id == id)
-                                                    .FirstOrDefault<Labor>();
+            var select = db.Labor.Where(x => x.Id == id)
+                                                        .FirstOrDefault<Labor>();
             if (select != null)
             {
                 select.Id = id;
                 select.LaborName = LaborObj.LaborName;
                 select.CountryId = LaborObj.CountryId;
                 select.DistrictId = LaborObj.DistrictId;
-                select.TaskDetail = LaborObj.TaskDetail;
                 select.WorkHours = LaborObj.WorkHours;
                 db.SaveChanges();
             }
-            /*else
-            {
-                return NotFound();
-            }*/
         }
 
         // DELETE api/<LaborWebAPIController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
+            var select = db.Labor.Where(x => x.Id == id).FirstOrDefault<Labor>();
+            db.Labor.Remove(select);
+            db.SaveChanges();
         }
     }
 }

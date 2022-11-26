@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LaborDataEntry\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {}
+    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {}
   },
   "projects": {
-    "D:\\LaborDataEntry\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {
+    "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LaborDataEntry\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
+        "projectUniqueName": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
         "projectName": "LaborDataEntryServer",
-        "projectPath": "D:\\LaborDataEntry\\LaborDataEntryServer\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
+        "projectPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\LaborDataEntryServer.csproj",
         "packagesPath": "C:\\Users\\Sanjeev\\.nuget\\packages\\",
-        "outputPath": "D:\\LaborDataEntry\\LaborDataEntryServer\\LaborDataEntryServer\\obj\\",
+        "outputPath": "D:\\iMark\\LaborDataEntryApp\\Back-End\\LaborDataEntryServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sanjeev\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,17 +39,64 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

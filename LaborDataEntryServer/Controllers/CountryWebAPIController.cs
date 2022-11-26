@@ -1,12 +1,13 @@
 ﻿using LaborDataEntryServer.Models;
 using LaborDataEntryServer.Repository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LaborDataEntryServer.Controllers
 {
-    /*[EnableCors("AllowOrigin")]*/
+    [EnableCors("AllowOrigin")]
     /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
@@ -48,7 +49,7 @@ namespace LaborDataEntryServer.Controllers
         {
             var select = db.Country.Where(x => x.Id == id)
                                                         .FirstOrDefault<Country>();
-            if(select != null)
+            if (select != null)
             {
                 select.Id = id;
                 select.Name = CountryObj.Name;
@@ -62,6 +63,10 @@ namespace LaborDataEntryServer.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
+            var select = db.Country.Where(x => x.Id == id).FirstOrDefault<Country>();
+            db.Country.Remove(select);
+            db.SaveChanges();
         }
     }
 }

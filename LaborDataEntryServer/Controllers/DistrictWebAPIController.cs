@@ -1,12 +1,13 @@
 ﻿using LaborDataEntryServer.Models;
 using LaborDataEntryServer.Repository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LaborDataEntryServer.Controllers
 {
-    /*[EnableCors("AllowOrigin")]*/
+    [EnableCors("AllowOrigin")]
     /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
@@ -27,16 +28,17 @@ namespace LaborDataEntryServer.Controllers
 
         // GET api/<DistrictWebAPIController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var select = db.District.Where(x => x.CountryId == id).ToList();
+            return Ok(select);
         }
 
         // POST api/<DistrictWebAPIController>
         [HttpPost]
         public IActionResult Post([FromBody] District DistrictObj)
         {
-            db.District.Add(DistrictObj); // in memory
+            db.District.Add(DistrictObj);
             db.SaveChanges();
             return Ok();
         }
@@ -46,13 +48,13 @@ namespace LaborDataEntryServer.Controllers
         public void Put(int id, [FromBody] District DistrictObj)
         {
             var select = db.District.Where(x => x.Id == id)
-                                                           .FirstOrDefault<District>();
-            if(select != null)
+                                                        .FirstOrDefault<District>();
+            if (select != null)
             {
-                select.Id = id; ;
+                select.Id = id;
                 select.CountryId = DistrictObj.CountryId;
                 select.Code = DistrictObj.Code;
-                select .LaborRatePerHour = DistrictObj.LaborRatePerHour;
+                select.LaborRatePerHour = DistrictObj.LaborRatePerHour;
                 select.IsActive = DistrictObj.IsActive;
                 db.SaveChanges();
             }
@@ -62,6 +64,10 @@ namespace LaborDataEntryServer.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
+            var select = db.District.Where(x => x.Id == id).FirstOrDefault<District>();
+            db.District.Remove(select);
+            db.SaveChanges();
         }
     }
 }
