@@ -1,0 +1,90 @@
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+      <h2 class="text-light primary py-3">Report</h2>
+
+      <div class="d-flex">
+          <button class="btn btn-success" (click)="add()"data-bs-toggle="modal" data-bs-target="#exampleModal">Generate Report</button>&nbsp;
+      </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div style="background:blue;"class="modal-header">
+        <h5 style="color:aliceblue;font-size:20px;margin-left:62px;font-weight: 620;"class="modal-title" id="exampleModalLabel"> Labor</h5>
+          <button type="button"class="btn-close "  data-bs-dismiss="modal" aria-label="Close">   
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="formValue">
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">Country</label>
+            <select formControlName="CountryId" (change)="selectCountryId($event)" class="form-select" >
+              <option type="number" *ngFor = "let temp of allcountrydata"  value={{temp.Id}}>
+                {{temp.Name}}
+              </option>
+            </select>
+          <small *ngIf="formValue.get('CountryId')?.invalid && formValue.get('CountryId')?.touched"class="text-danger">Country is Required</small>  
+        </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">District</label>
+            <select  formControlName="DistrictId" class="form-select" >
+              <option  type="number" *ngFor = "let temp of alldistrictdatabyid" value={{temp.Id}}>
+                {{temp.Code}}
+              </option>
+            </select>
+          <small *ngIf="formValue.get('DistrictId')?.invalid && formValue.get('DistrictId')?.touched"class="text-danger">District is Required</small>  
+        </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">LaborRatePerHour</label>
+            <input type="number" formControlName="LaborRatePerHour" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter LaborRatePerHour">
+            <small *ngIf="formValue.get('LaborRatePerHour')?.invalid && formValue.get('LaborRatePerHour')?.touched"class="text-danger">LaborRatePerHour is Required</small>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">WorkHours</label>
+            <input type="number" formControlName="WorkHours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter WorkHours">
+            <small *ngIf="formValue.get('WorkHours')?.invalid && formValue.get('WorkHours')?.touched"class="text-danger">WorkHours is Required</small>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">TotalWorkDoneInHours</label>
+            <input type="number" formControlName="TotalWorkDoneInHours" class="disabled-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            <small *ngIf="formValue.get('TotalWorkDoneInHours')?.invalid && formValue.get('TotalWorkDoneInHours')?.touched"class="text-danger"></small>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3"> 
+            <label for="exampleInputEmail1">TotalMoneySpent</label>
+            <input type="text" formControlName="TotalMoneySpent" class="disabled-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+            <small *ngIf="formValue.get('TotalMoneySpent')?.invalid && formValue.get('TotalMoneySpent')?.touched"class="text-danger"></small>
+          </div>
+          </div>
+
+          <div class="d-flex">
+            <button class="btn btn-success" (click)="print()"  data-bs-target="#exampleModal">Print</button>&nbsp;
+        </div>
+
+        </form>
+      </div>
+
+      <div style="background: blue;"class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
