@@ -1,4 +1,4 @@
 export class User{
-    Userame:string="ram";
+    Username:string="ram";
     Password:string="ram";
 }

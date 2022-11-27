@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
+import { JWTToken } from '../common/Common.Security';
 @NgModule({
   declarations: [
     LoginComponent
@@ -15,6 +16,9 @@ import { LoginComponent } from './login.component';
     FormsModule,
     ReactiveFormsModule
     
+  ],
+  providers : [
+    {provide : JWTToken, useClass : JWTToken}
   ]
 })
 export class LoginModule { }

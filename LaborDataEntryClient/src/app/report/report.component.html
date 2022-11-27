@@ -1,111 +1,84 @@
 <nav class="navbar navbar-light bg-dark">
-    <div class="container-fluid">
-        <h2 class="text-light primary py-3">Report</h2>
+  <div class="container-fluid">
+      <h2 class="text-light primary py-3">Report</h2>
 
-        <div class="d-flex">
-            <button class="btn btn-success" (click)="add()"data-bs-toggle="modal" data-bs-target="#exampleModal">Add Report</button>&nbsp;
-        </div>
-    </div>
+      <div class="d-flex">
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Generate Report</button>&nbsp;
+      </div>
+  </div>
 </nav>
 
-<!----table-->
-
-<table class="table mt-4 ">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">LaborName</th>
-            <th scope="col">CountryId</th>
-            <th scope="col">DistrictId</th>
-            <th scope="col">TaskDetail</th>
-            <th scope="col">WorkHours</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let data of alllabordata">
-            <td>{{data.Id}}</td>
-            <td>{{data.LaborName}}</td>
-            <td>{{data.CountryId}}</td>
-            <td>{{data.DistrictId}}</td>
-            <td>{{data.TaskDetail}}</td>
-            <td>{{data.WorkHours}}</td>
-            <td>
-               <!-- <button class="btn btn-info"(click)="edit(data)"data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp; -->
-               <!-- <button class="btn btn-danger"(click)="deletelab(data)">Delete</button> -->
-            </td>
-        </tr>
-    </tbody>
-</table>
 
 
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div style="background:blue;"class="modal-header">
-          <h5 style="color:aliceblue;font-size:20px;margin-left:62px;font-weight: 620;"class="modal-title" id="exampleModalLabel"> Report</h5>
-            <button type="button"class="btn-close "  data-bs-dismiss="modal" aria-label="Close">   
-          </button>
-        </div>
-        <div class="modal-body">
-          <form  [formGroup]="formValue">
-            <div class="form-group">
-              <div class="mb-3"> 
-              <label for="exampleInputEmail1">LaborName</label>
-              <input type="name" formControlName="LaborName"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your LaborName">
-              <small *ngIf="formValue.get('LaborName')?.invalid && formValue.get('LaborName')?.touched"class="text-danger">Name is Required</small>
-            </div>
-       </div>
-          <div class="form-group">
-            <div class="mb-3"> 
-            <label for="exampleInputEmail1">Country</label>
-            <select formControlName="CountryId" class="form-select" >
-              <option type="number" *ngFor = "let temp of allcountrydata" (click)="selectCountryId($event)" value={{temp.Id}}>
-                {{temp.Name}}
-              </option>
-            </select>
-          <small *ngIf="formValue.get('CountryId')?.invalid && formValue.get('CountryId')?.touched"class="text-danger">Country is Required</small>  
-        </div>
-          </div>
-          <div class="form-group">
-            <div class="mb-3"> 
-            <label for="exampleInputEmail1">District</label>
-            <select  formControlName="DistrictId" class="form-select" >
-              <option  type="number" *ngFor = "let temp of alldistrictdata" value={{temp.Id}}>
-                {{temp.Code}}
-              </option>
-            </select>
-          <small *ngIf="formValue.get('DistrictId')?.invalid && formValue.get('DistrictId')?.touched"class="text-danger">District is Required</small>  
-        </div>
-          </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div style="background:blue;"class="modal-header">
+        <h5 style="color:aliceblue;font-size:20px;margin-left:62px;font-weight: 620;"class="modal-title" id="exampleModalLabel"> Report</h5>
+          <button type="button"class="btn-close "  data-bs-dismiss="modal" aria-label="Close">   
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="formValue">
         <div class="form-group">
           <div class="mb-3"> 
-          <label for="exampleInputEmail1">TaskDetail</label>
-          <input type="text" formControlName="TaskDetail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter TaskDetail">
-          <small *ngIf="formValue.get('TaskDetail')?.invalid && formValue.get('TaskDetail')?.touched"class="text-danger">TaskDetail is Required</small>
+          <label for="exampleInputEmail1">Country</label>
+          <select formControlName="CountryId" (change)="selectCountryId($event)" class="form-select" >
+            <option type="number" *ngFor = "let temp of allcountrydata"  value={{temp.Id}}>
+              {{temp.Name}}
+            </option>
+          </select>
+        <small *ngIf="formValue.get('CountryId')?.invalid && formValue.get('CountryId')?.touched"class="text-danger">Country is Required</small>  
+      </div>
         </div>
-</div>
+        <div class="form-group">
+          <div class="mb-3"> 
+          <label for="exampleInputEmail1">District</label>
+          <select  formControlName="DistrictId" class="form-select" >
+            <option  type="number" *ngFor = "let temp of alldistrictdatabyid" value={{temp.Id}}>
+              {{temp.Code}}
+            </option>
+          </select>
+        <small *ngIf="formValue.get('DistrictId')?.invalid && formValue.get('DistrictId')?.touched"class="text-danger">District is Required</small>  
+      </div>
+        </div>
+
       <div class="form-group">
         <div class="mb-3"> 
-        <label for="exampleInputEmail1">WorkHours</label>
-        <input type="number" formControlName="WorkHours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter WorkHours">
-        <small *ngIf="formValue.get('WorkHours')?.invalid && formValue.get('WorkHours')?.touched"class="text-danger">WorkHours is Required</small>
+        <label for="exampleInputEmail1">LaborRatePerHour</label>
+        <input type="number" formControlName="LaborRatePerHour" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter LaborRatePerHour">
+        <small *ngIf="formValue.get('LaborRatePerHour')?.invalid && formValue.get('LaborRatePerHour')?.touched"class="text-danger">LaborRatePerHour is Required</small>
       </div>
       </div>
-          </form>
-        </div>
+    <div class="form-group">
+      <div class="mb-3"> 
+      <label for="exampleInputEmail1">WorkHours</label>
+      <input type="number" formControlName="WorkHours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter WorkHours">
+      <small *ngIf="formValue.get('WorkHours')?.invalid && formValue.get('WorkHours')?.touched"class="text-danger">WorkHours is Required</small>
+    </div>
+    </div>
 
+    <div class="form-group">
+      <div class="mb-3"> 
+      <label for="exampleInputEmail1">TotalWorkDoneInHours</label>
+      <input type="number" () formControlName="TotalWorkDoneInHours" readonly="readonly" class="disabled-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+      <small *ngIf="formValue.get('TotalWorkDoneInHours')?.invalid && formValue.get('TotalWorkDoneInHours')?.touched"class="text-danger">TotalWorkDoneInHours is Required</small>
+    </div>
+    </div>
 
-
-
-        <div style="background: blue;"class="modal-footer">
-          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-          <button *ngIf="showadd"type="button"(click)="addlabor()"[disabled]="formValue.invalid" class="btn btn-success">Add</button>
-          <!-- <button *ngIf="showupdate"type="button"(click)="update()" [disabled]="formValue.invalid"class="btn btn-success">Update</button> -->
-        </div>
+    <div class="form-group">
+      <div class="mb-3"> 
+      <label for="exampleInputEmail1">TotalMoneySpent</label>
+      <input type="number" formControlName="TotalMoneySpent" readonly="readonly" class="disabled-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+      <small *ngIf="formValue.get('TotalMoneySpent')?.invalid && formValue.get('TotalMoneySpent')?.touched"class="text-danger">TotalMoneySpent is Required</small>
+    </div>
+    </div>
+    <button class="btn btn-info"(click)="print()"data-bs-toggle="modal" data-bs-target="#exampleModal">Print</button>
+        </form>
       </div>
     </div>
   </div>
+</div>

@@ -136,7 +136,7 @@ getalldistrictdata(){
 }
 
 getalldistrictdatabyid(data:any){
-  this.api.getdistrictbyid(data.Id)
+  this.api.getdistrictbyid(data)
   .subscribe(res=>{
     this.alldistrictdatabyid=res;
   })

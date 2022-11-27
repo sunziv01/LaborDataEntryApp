@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   formValue!: FormGroup
 
   constructor(public http:HttpClient,
-    // public key:JWTToken,
+    public key:JWTToken,
     public route:Router, private formBuilder: FormBuilder ){}
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         .subscribe(res=>this.Success(res), res=>this.Error(res));
    }
    Success(res : any){
-      // this.key.value=res.Value;
+      this.key.value=res.Value;
       this.route.navigate(['/Home']);
    }
    Error(res : any){
