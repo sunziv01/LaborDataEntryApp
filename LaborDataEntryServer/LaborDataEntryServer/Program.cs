@@ -32,6 +32,30 @@ builder.Services.AddCors(options =>
         });
 });
 
+//JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "Shiv",
+                ValidAudience = "Shiv",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("shivkoirala@123.com"))
+            };
+        });
+
+//Session
+/*builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(50);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});*/
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -47,6 +71,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("AllowOrigin");
