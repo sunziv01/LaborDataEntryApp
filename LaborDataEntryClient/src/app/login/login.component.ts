@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { JWTToken } from '../common/Common.Security';
+import { Token } from '../common/Common.Security';
 import { User } from './login.model';
 import { FormBuilder, FormGroup,Validators  } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   formValue!: FormGroup
 
   constructor(public http:HttpClient,
-    public key:JWTToken,
+    public tok:Token,
     public route:Router, private formBuilder: FormBuilder ){}
 
   ngOnInit(): void {
@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
   }
    
    Login(){
-        this.http.post("https://localhost:7001/api/JWTToken",this.userObj)
+        this.http.post("https://localhost:7001/Security/CheckUser",this.userObj)
         .subscribe(res=>this.Success(res), res=>this.Error(res));
    }
    Success(res : any){
-      this.key.value=res.Value;
+      this.tok.value=res.Value;
       this.route.navigate(['/Home']);
    }
    Error(res : any){

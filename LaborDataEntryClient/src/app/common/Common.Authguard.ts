@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { JWTToken } from "./Common.Security";
+import { Token } from "./Common.Security";
 
 @Injectable()
 export class MyAuthGuard implements CanActivate {
 
 
-  constructor( private _router: Router ,public _key : JWTToken) {
+  constructor( private _router: Router ,public tok : Token) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this._key.value.length != 0) {
+    if (this.tok.value.length != 0) {
         return true;
     }
 

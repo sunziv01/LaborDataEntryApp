@@ -1,3 +1,3 @@
-export class JWTToken{
+export class Token{
     value:string="";
 }

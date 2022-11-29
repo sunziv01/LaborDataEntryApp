@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { CountryRoutingModule } from './country-routing.module';
 import { CountryComponent } from './country.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {AccordionModule} from 'primeng/accordion';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyAuthGuard } from '../common/Common.Authguard';
+import { MyJwtInterceptor } from '../common/Common.Interceptor';
+import { Token } from '@angular/compiler';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ], providers: [
+    {provide: MyAuthGuard},
+    {provide: HTTP_INTERCEPTORS, useClass: MyJwtInterceptor , multi:true}
   ]
 })
 export class CountryModule { }
