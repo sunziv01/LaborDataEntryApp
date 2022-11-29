@@ -15,7 +15,6 @@ namespace LaborDataEntryServer.Controllers
 {
     public class SecurityController : Controller
     {
-        /*ITax t = null;*/
         LaborDb db;
         public SecurityController(LaborDb db)
         {
