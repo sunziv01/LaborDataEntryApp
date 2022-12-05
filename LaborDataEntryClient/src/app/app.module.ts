@@ -22,7 +22,7 @@ import { LaborComponent } from './labor/labor.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   // bootstrap: [DashboardComponent]

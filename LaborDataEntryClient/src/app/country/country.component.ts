@@ -9,6 +9,7 @@ import { countrydata } from './country.model';
 })
 export class CountryComponent implements OnInit {
   //hide
+  p: number = 1;
   showadd!: boolean;
   showupdate!: boolean;
   countrymodelobj:countrydata=new countrydata

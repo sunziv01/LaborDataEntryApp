@@ -11,6 +11,7 @@ import { labordata } from './labor.model';
 })
 export class LaborComponent implements OnInit {
   //hide
+  p: number = 1;
   showadd!: boolean;
   showupdate!: boolean;
   labormodelobj:labordata=new labordata

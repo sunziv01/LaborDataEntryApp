@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of alldistrictdata">
+        <tr *ngFor="let data of alldistrictdata | paginate: { itemsPerPage: 7, currentPage: p }">
             <td>{{data.Id}}</td>
             <td>{{data.CountryId}}</td>
             <td>{{data.Code}}</td>
@@ -35,7 +35,7 @@
         </tr>
     </tbody>
 </table>
-
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 
   

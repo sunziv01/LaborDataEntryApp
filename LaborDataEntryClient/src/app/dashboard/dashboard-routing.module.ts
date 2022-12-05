@@ -27,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'Home',
-    loadChildren: () => import('../home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => 
+      import('../home/home.module').then((m) => m.HomeModule),
     // canActivate : [MyAuthGuard]
   },
   {

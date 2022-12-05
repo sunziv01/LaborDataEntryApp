@@ -10,6 +10,7 @@ import { districtdata } from './district.model';
 })
 export class DistrictComponent implements OnInit {
   //hide
+  p: number = 1;
   showadd!: boolean;
   showupdate!: boolean;
   districtmodelobj:districtdata=new districtdata;

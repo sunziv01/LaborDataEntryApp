@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyAuthGuard } from '../common/Common.Authguard';
 import { MyJwtInterceptor } from '../common/Common.Interceptor';
 import { Token } from '@angular/compiler';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { Token } from '@angular/compiler';
     HttpClientModule,
     AccordionModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ], providers: [
     {provide: MyAuthGuard},
     {provide: HTTP_INTERCEPTORS, useClass: MyJwtInterceptor , multi:true}

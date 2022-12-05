@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LaborRoutingModule } from './labor-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LaborComponent } from './labor.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { LaborComponent } from './labor.component';
     LaborRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ]
 })
 export class LaborModule { }
